@@ -18,12 +18,15 @@ app.post('/generate', async (req, res) => {
 
   try {
     const prompt = `
-      Create a humorous, creative analysis of the Instagram username "${username}". 
-      Use cultural references, emojis, and a mix of playful critique and admiration.
+      Create a humorous, creative analysis of the Instagram account with the following details:
+      - Username: "${username}"
+      - Bio: "${bio}"
+      - Post Descriptions: "${posts.join(' ')}"
+      Use cultural references, emojis, and a mix of playful critique and admiration to analyze this information.
     `;
 
     const response = await openai.createCompletion({
-      model: 'text-davinci-003',
+      model: 'gpt-4o-mini',
       prompt: prompt,
       max_tokens: 250,
     });
