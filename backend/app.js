@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const { Configuration, OpenAIApi } = require('openai');
+const OpenAI = require('openai');
 const puppeteer = require('puppeteer');
 
 
@@ -11,10 +11,9 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-const openai = new OpenAIApi(
-  new Configuration({ apiKey: process.env.OPENAI_API_KEY })
-);
-
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY
+});
 // Function to scrape Instagram profile
 const scrapeInstagram = async (username) => {
   const browser = await puppeteer.launch();
