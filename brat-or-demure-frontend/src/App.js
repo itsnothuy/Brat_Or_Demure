@@ -49,7 +49,7 @@ const App = () => {
   const handleSubmit = async () => {
     setLoading(true);
     try {
-      const response = await axios.post('http://localhost:5000/generate', { username });
+      const response = await axios.post('/generate', { username });
       setResult(response.data.result);
     } catch (error) {
       setResult('Error generating response. Please try again later.');
@@ -82,10 +82,12 @@ const App = () => {
       </div>
 
       {result && (
-        <div className="mt-6 bg-white rounded-lg p-6 shadow-lg text-black w-4/5 max-w-md">
-          <h2 className="text-2xl font-bold mb-2 text-purple">BRAT ⚡</h2>
-          <p className="text-lg">{result}</p>
-        </div>
+      <div className="mt-6 bg-white rounded-lg p-6 shadow-lg text-black w-4/5 max-w-md">
+        <h2 className="text-2xl font-bold mb-2 text-purple">
+          {result.startsWith('BRAT') ? 'BRAT ⚡' : 'Demure 🌸'}
+        </h2>
+        <p className="text-lg whitespace-pre-line">{result}</p> {/* Preserves line breaks */}
+      </div>
       )}
     </div>
   );
