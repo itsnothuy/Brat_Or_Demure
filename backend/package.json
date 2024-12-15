@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
@@ -15,5 +16,10 @@
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "openai": "^4.76.2"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "puppeteer": "^23.10.4",
+    "supertest": "^6.3.4"
   }
 }
